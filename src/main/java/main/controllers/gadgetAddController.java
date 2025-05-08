@@ -1,13 +1,13 @@
 package main.controllers;
 
-import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import main.MainApp;
 
 import java.io.File;
@@ -15,6 +15,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class gadgetAddController {
+    @FXML
+    private GridPane gridPane;
+
+
     public void returnToMainPage(javafx.event.ActionEvent actionEvent) throws IOException {
         Stage newStage=new Stage();
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("main.fxml"));
@@ -28,17 +32,14 @@ public class gadgetAddController {
         currentStage.close();
     }
 
-    public void addImage(ActionEvent actionEvent) {
+    public void addImage() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Виберіть файл");
 
         FileChooser.ExtensionFilter extFilter = new FileChooser
                 .ExtensionFilter("image(*.png,*.jpg,*.jpeg)", List.of("*.png", "*.jpg", "*.jpeg"));
         fileChooser.getExtensionFilters().add(extFilter);
-
         File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) {
-            System.out.println("Ви вибрали: " + selectedFile.getName());
-        }
+        Image image = new Image(selectedFile.toURI().toString());
     }
 }

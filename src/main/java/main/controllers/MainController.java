@@ -53,8 +53,8 @@ public class MainController {
         Scene scene = new Scene(loader.load(), 800, 600);
         newStage.setScene(scene);
         newStage.setTitle("Gadget adding");
-        newStage.setMinWidth(200);
-        newStage.setMinHeight(200);
+        newStage.setMinWidth(700);
+        newStage.setMinHeight(640);
         newStage.show();
         Stage currentStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         currentStage.close();

@@ -1,27 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minWidth="150.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.gadgetAddController">
-    <Button layoutX="14.0" layoutY="333.0" mnemonicParsing="false" onAction="#returnToMainPage" prefHeight="32.0" prefWidth="74.0" text="cancel" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0">
+<AnchorPane minWidth="600.0" prefHeight="610.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.gadgetAddController">
+    <Button layoutX="14.0" layoutY="333.0" mnemonicParsing="false" onAction="#returnToMainPage" prefHeight="32.0" prefWidth="74.0" text="cancel" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="550.0">
         <font>
           <Font size="16.0" />
         </font>
     </Button>
-    <Button layoutX="511.0" layoutY="333.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="74.0" text="Add" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="14.0">
+    <Button layoutX="539.0" layoutY="533.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Add phone" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="550.0">
         <font>
           <Font size="16.0" />
         </font>
     </Button>
-   <TextField alignment="TOP_LEFT" layoutX="13.0" layoutY="99.0" promptText="name" />
-   <TextField layoutX="13.0" layoutY="133.0" promptText="CPU" />
-   <TextField layoutX="13.0" layoutY="167.0" promptText="GPU" />
-   <Label layoutX="14.0" layoutY="14.0" text="Adding Phone">
+   <Label layoutX="14.0" layoutY="14.0" text="Adding Phone" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
       <font>
          <Font size="26.0" />
       </font>
    </Label>
-   <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#addImage" prefHeight="26.0" prefWidth="150.0" text="Add Image" />
+   <GridPane layoutX="14.0" layoutY="52.0" maxWidth="1000.0" minHeight="480.0" minWidth="600.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="52.0">
+     <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+     </columnConstraints>
+     <rowConstraints>
+       <RowConstraints minHeight="200.0" prefHeight="160.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="250.0" prefHeight="320.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+         <VBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="150.0" spacing="5.0">
+            <children>
+               <Label minHeight="20.0" text="General" />
+               <TextField promptText="name" />
+               <TextField promptText="price" />
+               <Button mnemonicParsing="false" onAction="#addImage" prefHeight="26.0" prefWidth="400.0" text="Add Image" />
+            </children>
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding></VBox>
+         <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="1">
+            <children>
+               <Label minHeight="20.0" prefHeight="30.0" text="Display" />
+               <TextField promptText="diagonal" />
+               <HBox prefHeight="10.0" prefWidth="200.0" spacing="5.0">
+                  <children>
+                     <TextField promptText="width" />
+                     <TextField promptText="height" />
+                  </children>
+               </HBox>
+               <TextField promptText="resolution ratio" />
+               <TextField promptText="ppi" />
+               <TextField promptText="refresh rate" />
+               <TextField promptText="brightness" />
+            </children>
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+         </VBox>
+         <VBox layoutX="160.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="2">
+            <children>
+               <Label minHeight="20.0" text="Front Camera" />
+               <TextField promptText="resolution" />
+               <TextField promptText="aperture" />
+               <TextField promptText="field of view" />
+            </children>
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+         </VBox>
+         <VBox layoutX="310.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="3">
+            <children>
+               <Label minHeight="40.0" prefWidth="141.0" text="Connections And Communication" wrapText="true" />
+               <HBox prefHeight="20.0" prefWidth="200.0">
+                  <children>
+                     <TextField prefHeight="26.0" prefWidth="400.0" promptText="cellular technology" />
+                     <Button minWidth="38.0" mnemonicParsing="false" prefWidth="17.0" text="Add" />
+                  </children>
+               </HBox>
+               <TextField promptText="sim card type" />
+               <TextField promptText="sim card amount" />
+               <HBox prefHeight="10.0" prefWidth="200.0">
+                  <children>
+                     <TextField prefHeight="26.0" prefWidth="400.0" promptText="connectivity technology">
+                        <font>
+                           <Font size="11.0" />
+                        </font></TextField>
+                     <Button minWidth="38.0" mnemonicParsing="false" text="Add" />
+                  </children>
+               </HBox>
+               <HBox prefHeight="10.0" prefWidth="10.0">
+                  <children>
+                     <TextField prefWidth="400.0" promptText="input and output" />
+                     <Button minWidth="38.0" mnemonicParsing="false" text="Add" />
+                  </children>
+               </HBox>
+            </children>
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+         </VBox>
+         <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.rowIndex="1">
+            <children>
+               <Label minHeight="20.0" text="Hardware" />
+               <TextField promptText="operating system" />
+               <TextField promptText="CPU" />
+               <TextField promptText="CPUFrequency" />
+               <TextField promptText="CPUCores" />
+               <TextField promptText="GPU" />
+               <TextField promptText="RAM" />
+               <TextField promptText="memory storage" />
+               <TextField promptText="memory card slot" />
+            </children>
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+         </VBox>
+         <VBox prefHeight="200.0" prefWidth="150.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <children>
+               <Label minHeight="20.0" text="MainCamera" />
+               <TextField promptText="camera zoom" />
+               <Label text="Lens" />
+               <TextField promptText="lens type" />
+               <TextField promptText="lens name" />
+               <TextField promptText="resolution" />
+               <TextField promptText="aperture" />
+               <TextField promptText="focal length" />
+               <TextField promptText="field of view" />
+               <Button mnemonicParsing="false" text="Add lens" />
+            </children>
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+         </VBox>
+         <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <children>
+               <Label minHeight="20.0" text="Power Supply" />
+               <TextField promptText="capacity" />
+               <TextField promptText="fast charging" />
+               <TextField promptText="charge power" />
+               <TextField promptText="fast charging time" />
+            </children>
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+         </VBox>
+         <VBox prefHeight="200.0" prefWidth="157.0" spacing="5.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <children>
+               <Label minHeight="20.0" text="Phone Body" />
+               <TextField promptText="waterproof" />
+               <TextField promptText="materials" />
+               <TextField promptText="dimensions" />
+               <TextField promptText="weight" />
+            </children>
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+         </VBox>
+      </children>
+   </GridPane>
 </AnchorPane>
