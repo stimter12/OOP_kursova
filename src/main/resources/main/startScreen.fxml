@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.StartScreenController">
+   <VBox alignment="CENTER" maxHeight="200.0" maxWidth="100.0" minHeight="200.0" minWidth="100.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0">
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <Label minHeight="130.0" minWidth="261.0" prefHeight="130.0" prefWidth="261.0" text="Gadgets accounting" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Arial" size="52.0" />
+         </font>
+      </Label>
+      <Button mnemonicParsing="false" onAction="#start" prefHeight="38.0" prefWidth="146.0" text="Start">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#close" prefHeight="37.0" prefWidth="145.0" text="Exit">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </VBox>
+</StackPane>
