@@ -19,6 +19,21 @@
             <artifactId>lombok</artifactId>
             <version>1.18.36</version>
         </dependency>
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId>
+            <artifactId>ikonli-javafx</artifactId>
+            <version>12.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId>
+            <artifactId>ikonli-fluentui-pack</artifactId>
+            <version>12.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId>
+            <artifactId>ikonli-boxicons-pack</artifactId>
+            <version>12.4.0</version>
+        </dependency>
     </dependencies>
 
 

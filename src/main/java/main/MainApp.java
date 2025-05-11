@@ -14,8 +14,8 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("startScreen.fxml"));
-        Scene scene = new Scene(loader.load(), 800, 600);
+        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("startPage.fxml"));
+        Scene scene = new Scene(loader.load(), 400, 400);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Gadgets accounting");
         primaryStage.setMinWidth(280);

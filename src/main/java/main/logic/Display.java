@@ -35,6 +35,10 @@ public class Display {
                 "brightness  " + brightness + "\n";
     }
 
+    public void setResolution(String width, String height) {
+        this.resolution=new Resolution(width,height);
+    }
+
     @AllArgsConstructor
     @Getter
     @Setter

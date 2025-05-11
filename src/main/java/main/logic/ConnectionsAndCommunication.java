@@ -19,8 +19,8 @@ public class ConnectionsAndCommunication {
 
     public  ConnectionsAndCommunication(){
         this.cellularTechnology=new ArrayList<>();
-        this.simCardType="";
-        this.simCardAmount="";
+        this.simCardType="-";
+        this.simCardAmount="-";
         this.connectivityTechnology=new ArrayList<>();
         this.inputAndOutput=new ArrayList<>();
     }

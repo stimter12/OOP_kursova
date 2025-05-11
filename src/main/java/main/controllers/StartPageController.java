@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import main.MainApp;
 import java.io.IOException;
 
-public class StartScreenController {
+public class StartPageController {
 
     public void close() {
         Platform.exit();
@@ -16,7 +16,7 @@ public class StartScreenController {
 
     public void start(javafx.event.ActionEvent actionEvent) throws IOException {
         Stage newStage=new Stage();
-        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("main.fxml"));
+        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("mainPage.fxml"));
         Scene scene = new Scene(loader.load(), 800, 600);
         newStage.setScene(scene);
         newStage.setTitle("Gadgets accounting");

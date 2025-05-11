@@ -30,7 +30,7 @@ public class MainCamera {
     @AllArgsConstructor
     @Setter
     @Getter
-    private class Lens {
+    public static class Lens {
         private String lensType;
         private String lensName;
         private String resolution;
