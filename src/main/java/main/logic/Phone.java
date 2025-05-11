@@ -1,11 +1,7 @@
 package main.logic;
 
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import lombok.*;
-import org.kordamp.ikonli.javafx.FontIcon;
-import java.util.ArrayList;
-import java.util.List;
 
 @AllArgsConstructor
 @Getter
@@ -22,12 +18,6 @@ public class Phone extends Gadgets {
     public Phone(){
         this.setName("-");
         this.setPrice("-");
-        this.setButtons(new ArrayList<>());
-        this.setButtons(new ArrayList<>(List.of(
-                new Button("",new FontIcon("fltfal-info-20")),
-                new Button("",new FontIcon("fltfal-edit-20")),
-                new Button("",new FontIcon("fltfal-delete-20"))
-        )));
         this.setImageView(new ImageView("File:Images\\noImageAvailable.png"));
         this.display=new Display();
         this.frontCamera=new FrontCamera();
