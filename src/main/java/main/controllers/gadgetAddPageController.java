@@ -209,7 +209,7 @@ public class gadgetAddPageController {
         if (!phone.getName().equals("-")) namePrice.setText(phone.getName());
         if (!phone.getPrice().equals("-")) namePrice.setText(namePrice.getText()+" "+phone.getPrice());
         //Display
-        if (!phone.getDisplay().getDiagonal().equals("-")) display.setText(display.getText()+"diagonal: "+phone.getDisplay().getDiagonal());
+        if (!phone.getDisplay().getDiagonal().equals("-")) display.setText("diagonal: "+phone.getDisplay().getDiagonal());
         if (!phone.getDisplay().getResolution().getWidth().equals("-")&!phone.getDisplay().getResolution().getHeight().equals("-"))display.setText(display.getText()+"\nresolution: "+phone.getDisplay().getResolution().getWidth()+"x"+phone.getDisplay().getResolution().getHeight());
         if (!phone.getDisplay().getResolutionRatio().equals("-"))display.setText(display.getText()+"\nresolution ratio: "+phone.getDisplay().getResolutionRatio());
         if (!phone.getDisplay().getPpi().equals("-"))display.setText(display.getText()+"\nppi: "+phone.getDisplay().getPpi());
