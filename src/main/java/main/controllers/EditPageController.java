@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import lombok.Setter;
 import main.MainApp;
 import main.logic.MainCamera;
 import main.logic.Phone;
@@ -25,7 +26,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-public class gadgetAddPageController {
+public class EditPageController {
     @FXML
     private TextField height;
     @FXML
@@ -124,10 +125,12 @@ public class gadgetAddPageController {
     private Label powerSupply;
     @FXML
     private Label phoneBody;
-
-    Phone phone = new Phone();
-
-    public void initialize(){updateInfo();}
+    @Setter
+    private int index;
+    Phone phone=new Phone();
+    public void setPhone() {
+        phone= (Phone) GadgetsService.getInstance().getGadgets().get(index);
+    }
 
     public void returnToMainPage(javafx.event.ActionEvent actionEvent) throws IOException {
         Stage newStage=new Stage();
@@ -156,7 +159,7 @@ public class gadgetAddPageController {
 
     private void savePhone(ActionEvent actionEvent) {
         phone.description();
-        GadgetsService.getInstance().add(phone);
+        GadgetsService.getInstance().getGadgets().set(index, phone);
         try {
             returnToMainPage(actionEvent);
         } catch (IOException e) {

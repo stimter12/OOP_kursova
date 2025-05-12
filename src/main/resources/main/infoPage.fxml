@@ -1,27 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="main.controllers.infoPageController">
-   <AnchorPane prefHeight="344.0" prefWidth="440.0">
-      <VBox layoutX="-12.0" layoutY="20.0" prefHeight="500.0" prefWidth="200.0" AnchorPane.leftAnchor="14.0"
-            AnchorPane.rightAnchor="226.0" AnchorPane.topAnchor="14.0">
-         <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true"
-                    preserveRatio="true"/>
-         <Label fx:id="namePrice" text="Label"/>
-         <Label fx:id="hardware" text="Label"/>
-         <Label fx:id="mainCamera" text="Label"/>
-         <Label fx:id="frontCamera" text="Label"/>
-      </VBox>
-      <VBox layoutX="178.0" layoutY="-3.0" prefHeight="500.0" prefWidth="200.0" AnchorPane.leftAnchor="214.0"
-            AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
-         <Label fx:id="display" text="Label"/>
-         <Label fx:id="connectionsAndCommunication" text="Label"/>
-         <Label fx:id="powerSupply" text="Label"/>
-         <Label fx:id="phoneBody" text="Label"/>
-      </VBox>
-   </AnchorPane>
-</ScrollPane>
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.InfoPageController">
+   <children>
+      <ScrollPane prefHeight="400.0" prefWidth="442.0">
+         <AnchorPane prefHeight="344.0" prefWidth="440.0">
+            <VBox layoutX="-12.0" layoutY="20.0" prefWidth="200.0" spacing="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="226.0" AnchorPane.topAnchor="14.0">
+               <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+               <Button mnemonicParsing="false" onAction="#ImageViewFull">
+                  <graphic>
+                     <FontIcon iconLiteral="fltral-image-add-24" iconSize="20" />
+                  </graphic>
+               </Button>
+               <Label fx:id="namePrice" />
+               <Label text="Hardware">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <Label fx:id="hardware" />
+               <Label text="Main camera">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <Label fx:id="mainCamera" />
+            </VBox>
+            <VBox layoutX="178.0" layoutY="-3.0" maxHeight="3000.0" prefWidth="200.0" spacing="5.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+               <Label text="Display">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <Label fx:id="display" />
+               <Label text="Connections and communication" wrapText="true">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <Label fx:id="connectionsAndCommunication" />
+               <Label text="Power supply">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <Label fx:id="powerSupply" />
+               <Label text="Phone body">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <Label fx:id="phoneBody" />
+               <Label text="Front camera">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <Label fx:id="frontCamera" />
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </VBox>
+         </AnchorPane>
+      </ScrollPane>
+      <Button mnemonicParsing="false" onAction="#returnToMainPage" text="Back" />
+   </children>
+</VBox>

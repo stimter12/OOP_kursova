@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -34,8 +35,12 @@ public class MainPageController {
 
     public  void initialize() {
         imageColumn.setCellValueFactory(new PropertyValueFactory<>("imageView"));
+        imageColumn.setSortable(false);
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        descriptionColumn.setSortable(false);
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        //TODO price sort
+        buttonsColumn.setSortable(false);
         buttonsColumn.setCellFactory(col ->new TableCell<>(){
             private final Button infoButton=new Button("",new FontIcon("fltfal-info-28"));
             private final Button editButton=new Button("",new FontIcon("fltfal-edit-24"));
@@ -43,8 +48,12 @@ public class MainPageController {
             private final VBox vbox = new VBox(5,infoButton,editButton,deleteButton);
             {
                 vbox.setAlignment(Pos.CENTER);
-                infoButton.setOnAction(event -> infoPage(event));
-                editButton.setOnAction(event -> editPage(event));
+                infoButton.setOnAction(event -> {
+                    infoPage(event,getIndex());
+                });
+                editButton.setOnAction(event -> {
+                    editPage((event),getIndex());
+                });
                 deleteButton.setOnAction(event -> {
                     GadgetsService.getInstance().delete(getIndex());
                     updateTable();
@@ -71,16 +80,19 @@ public class MainPageController {
         Platform.exit();
     }
 
-    public void infoPage(ActionEvent actionEvent) {
-        Stage newStage=new Stage();
+    public void infoPage(ActionEvent actionEvent, int index) {
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("infoPage.fxml"));
-        Scene scene;
+        Parent root;
         try {
-            scene = new Scene(loader.load(), 800, 600);
+            root = loader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        newStage.setScene(scene);
+        InfoPageController controller = loader.getController();
+        controller.setIndex(index);
+        controller.gadgetView();
+        Stage newStage=new Stage();
+        newStage.setScene(new Scene(root));
         newStage.setTitle("Info");
         newStage.setMinWidth(400);
         newStage.setMinHeight(500);
@@ -89,17 +101,21 @@ public class MainPageController {
         currentStage.close();
     }
 
-    private void editPage(ActionEvent actionEvent) {
-        Stage newStage=new Stage();
+    private void editPage(ActionEvent actionEvent, int index) {
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("editPage.fxml"));
-        Scene scene;
+        Parent root;
         try {
-            scene = new Scene(loader.load(), 800, 600);
+            root = loader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        newStage.setScene(scene);
-        newStage.setTitle("Edit Gadget");
+        EditPageController controller = loader.getController();
+        controller.setIndex(index);
+        controller.setPhone();
+        controller.updateInfo();
+        Stage newStage=new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.setTitle("Editing gadget");
         newStage.setMinWidth(400);
         newStage.setMinHeight(500);
         newStage.show();
@@ -110,13 +126,21 @@ public class MainPageController {
     public void addingGadget(ActionEvent actionEvent) throws IOException {
         Stage newStage=new Stage();
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("gadgetAddPage.fxml"));
-        Scene scene = new Scene(loader.load(), 800, 600);
+        Scene scene = new Scene(loader.load(), 800, 450);
         newStage.setScene(scene);
         newStage.setTitle("Gadget adding");
-        newStage.setMinWidth(400);
+        newStage.setMinWidth(770);
         newStage.setMinHeight(500);
         newStage.show();
         Stage currentStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
+    }
+
+    public void aboutProgram() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About Program");
+        alert.setHeaderText("OOP_Kursova");
+        alert.setContentText("This program was developed for a coursework assignment");
+        alert.showAndWait();
     }
 }

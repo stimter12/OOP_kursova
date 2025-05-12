@@ -1,26 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minWidth="350.0" prefHeight="474.0" prefWidth="643.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.gadgetAddPageController">
-    <Button layoutX="14.0" layoutY="404.0" mnemonicParsing="false" onAction="#returnToMainPage" prefHeight="32.0" prefWidth="100.0" text="cancel" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="390.0">
-        <font>
-          <Font size="16.0" />
-        </font>
-    </Button>
-    <Button layoutX="145.0" layoutY="403.0" mnemonicParsing="false" onAction="#savePhone" prefHeight="32.0" prefWidth="100.0" text="Add phone" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="390.0">
-        <font>
-          <Font size="16.0" />
-        </font>
-    </Button>
+<AnchorPane minWidth="350.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.gadgetAddPageController">
+    <ScrollPane prefHeight="400.0" prefWidth="450.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="14.0">
+        <AnchorPane prefHeight="344.0" prefWidth="440.0">
+            <VBox layoutX="-12.0" layoutY="20.0" prefWidth="200.0" spacing="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="226.0" AnchorPane.topAnchor="14.0">
+                <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                <Label fx:id="namePrice" />
+                <Label text="Hardware">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="hardware" />
+                <Label text="Main camera">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="mainCamera" />
+            </VBox>
+            <VBox layoutX="178.0" layoutY="-3.0" maxHeight="3000.0" prefWidth="200.0" spacing="5.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                <Label text="Display">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Label>
+                <Label fx:id="display" />
+                <Label text="Connections and communication" wrapText="true">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Label>
+                <Label fx:id="connectionsAndCommunication" />
+                <Label text="Power supply">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Label>
+                <Label fx:id="powerSupply" />
+                <Label text="Phone body">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Label>
+                <Label fx:id="phoneBody" />
+                <Label text="Front camera">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="frontCamera" />
+            <padding>
+               <Insets left="5.0" />
+            </padding>
+            </VBox>
+        </AnchorPane>
+    </ScrollPane>
+    <Button layoutX="14.0" layoutY="421.0" mnemonicParsing="false" onAction="#returnToMainPage" prefHeight="32.0" prefWidth="53.0" text="cancel" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="410.0" />
+    <Button layoutX="206.0" layoutY="421.0" mnemonicParsing="false" onAction="#savePhoneConfirm" prefHeight="32.0" prefWidth="82.0" text="Add phone" AnchorPane.topAnchor="410.0" />
    <Label layoutX="14.0" layoutY="14.0" text="Adding Phone" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
       <font>
          <Font size="26.0" />
       </font>
    </Label>
-    <TabPane layoutX="14.0" layoutY="52.0" prefHeight="326.0" prefWidth="277.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="52.0">
+    <TabPane layoutX="14.0" layoutY="52.0" prefHeight="343.0" prefWidth="278.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="52.0">
         <Tab text="General">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                  <Label layoutX="14.0" layoutY="14.0" minHeight="20.0" text="Name" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
@@ -37,14 +82,14 @@
                   <TextField fx:id="height" layoutX="71.0" layoutY="51.0" prefWidth="70.0" promptText="3168" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="49.0" />
                   <TextField fx:id="width" layoutX="150.0" layoutY="51.0" prefWidth="70.0" promptText="1440" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="49.0" />
                  <TextField fx:id="resolutionRatio" layoutX="70.0" layoutY="86.0" promptText="20 x 9" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="84.0" />
-                 <TextField fx:id="ppi" layoutX="70.0" layoutY="192.0" promptText="510 ppi" AnchorPane.rightAnchor="14.0" />
-                 <TextField fx:id="refreshRate" layoutX="70.0" layoutY="157.0" promptText="120 Hz" AnchorPane.rightAnchor="14.0" />
-                 <TextField fx:id="brightness" layoutX="70.0" layoutY="123.0" promptText="800-1600 nit" AnchorPane.rightAnchor="14.0" />
+                 <TextField fx:id="ppi" layoutX="114.00000000000003" layoutY="121.0" promptText="510 ppi" AnchorPane.rightAnchor="14.0" />
+                 <TextField fx:id="refreshRate" layoutX="114.00000000000003" layoutY="156.0" promptText="120 Hz" AnchorPane.rightAnchor="14.0" />
+                 <TextField fx:id="brightness" layoutX="114.00000000000003" layoutY="191.0" promptText="800-1600 nit" AnchorPane.rightAnchor="14.0" />
             <Label layoutX="16.0" layoutY="55.0" text="resolution" AnchorPane.leftAnchor="14.0" />
             <Label layoutX="19.0" layoutY="90.0" text="resolution ratio" AnchorPane.leftAnchor="14.0" />
-            <Label layoutX="19.0" layoutY="127.0" text="brightness" AnchorPane.leftAnchor="14.0" />
-            <Label layoutX="19.0" layoutY="161.0" text="refresh rate" AnchorPane.leftAnchor="14.0" />
-            <Label layoutX="19.0" layoutY="196.0" text="ppi" AnchorPane.leftAnchor="14.0" />
+            <Label layoutX="19.0" layoutY="196.0" text="brightness" AnchorPane.leftAnchor="14.0" />
+            <Label layoutX="14.0" layoutY="160.0" text="refresh rate" AnchorPane.leftAnchor="14.0" />
+            <Label layoutX="14.0" layoutY="126.0" text="ppi" AnchorPane.leftAnchor="14.0" />
             </AnchorPane>
         </Tab>
         <Tab text="Front camera">
@@ -75,13 +120,13 @@
                   <Font size="11.0" />
                </font>
             </TextField>
-            <Button layoutX="114.0" layoutY="49.0" minWidth="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="Add" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="49.0" />
-            <Button layoutX="199.0" layoutY="54.0" minWidth="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="clear" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="49.0" />
+            <Button layoutX="114.0" layoutY="49.0" minWidth="38.0" mnemonicParsing="false" onAction="#connectivityTechnologyAdd" prefHeight="25.0" prefWidth="49.0" text="Add" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="49.0" />
+            <Button layoutX="199.0" layoutY="54.0" minWidth="38.0" mnemonicParsing="false" onAction="#connectivityTechnologyClear" prefHeight="25.0" prefWidth="50.0" text="clear" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="49.0" />
             <Label layoutX="12.0" layoutY="14.0" minHeight="25.0" prefHeight="40.0" prefWidth="74.0" text="connectivity technology" wrapText="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
-            <Button layoutX="113.0" layoutY="122.0" minWidth="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="Add" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="119.0" />
-            <Button layoutX="213.0" layoutY="122.0" minWidth="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="clear" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="119.0" />
-            <Button layoutX="109.0" layoutY="187.0" minWidth="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="Add" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="189.0" />
-            <Button layoutX="209.0" layoutY="187.0" minWidth="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="clear" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="189.0" />
+            <Button layoutX="113.0" layoutY="122.0" minWidth="38.0" mnemonicParsing="false" onAction="#cellularTechnologyAdd" prefHeight="25.0" prefWidth="49.0" text="Add" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="119.0" />
+            <Button layoutX="213.0" layoutY="122.0" minWidth="38.0" mnemonicParsing="false" onAction="#cellularTechnologyClear" prefHeight="25.0" prefWidth="50.0" text="clear" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="119.0" />
+            <Button layoutX="109.0" layoutY="187.0" minWidth="38.0" mnemonicParsing="false" onAction="#inputAndOutputAdd" prefHeight="25.0" prefWidth="49.0" text="Add" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="189.0" />
+            <Button layoutX="209.0" layoutY="187.0" minWidth="38.0" mnemonicParsing="false" onAction="#InputAndOutputClear" prefHeight="25.0" prefWidth="50.0" text="clear" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="189.0" />
             </AnchorPane>
         </Tab>
         <Tab text="Hardware">
@@ -113,7 +158,7 @@
                  <TextField fx:id="lensType" layoutX="114.0" layoutY="101.0" promptText="Telephoto lens" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="101.0" />
                  <TextField fx:id="lensResolution" layoutX="114.0" layoutY="136.0" promptText="50 MP" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="136.0" />
                  <TextField fx:id="lensAperture" layoutX="114.0" layoutY="171.0" promptText="f/2.6" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="171.0" />
-                 <TextField fx:id="focalLength" layoutX="114.0" layoutY="206.0" promptText="23 mm" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="206.0" />
+                 <TextField fx:id="lensFocalLength" layoutX="114.0" layoutY="206.0" promptText="23 mm" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="206.0" />
                  <TextField fx:id="lensFieldOfView" layoutX="114.0" layoutY="241.0" promptText="85" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="241.0" />
             <Label layoutX="14.0" layoutY="106.0" minHeight="20.0" text="type" AnchorPane.leftAnchor="14.0" />
             <Label layoutX="14.0" layoutY="140.0" text="resolution" AnchorPane.leftAnchor="14.0" />
@@ -125,6 +170,8 @@
                   <Font size="16.0" />
                </font>
             </Label>
+            <Button layoutX="113.0" layoutY="263.0" mnemonicParsing="false" onAction="#lensAdd" text="Add" AnchorPane.bottomAnchor="14.0" />
+            <Button layoutX="198.0" layoutY="263.0" mnemonicParsing="false" onAction="#lensClear" text="Clear" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
             </AnchorPane>
         </Tab>
         <Tab text="Power supply">
@@ -152,4 +199,5 @@
             </AnchorPane>
         </Tab>
     </TabPane>
+   <Button layoutX="85.0" layoutY="421.0" mnemonicParsing="false" onAction="#updatePhone" prefHeight="32.0" prefWidth="100.0" text="apply changes" AnchorPane.topAnchor="410.0" />
 </AnchorPane>
