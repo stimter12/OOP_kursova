@@ -63,15 +63,20 @@ public class MainPageController {
             private final VBox vbox = new VBox(5,infoButton,editButton,deleteButton);
             {
                 vbox.setAlignment(Pos.CENTER);
-                infoButton.setOnAction(event -> {
-                    infoPage(event,getIndex());
-                });
-                editButton.setOnAction(event -> {
-                    editPage((event),getIndex());
-                });
+                infoButton.setOnAction(event -> infoPage(event,getIndex()));
+                editButton.setOnAction(event -> editPage((event),getIndex()));
                 deleteButton.setOnAction(event -> {
-                    GadgetsService.getInstance().delete(getIndex());
-                    updateTable();
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirm phone deleting");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Are you sure?");
+                    Optional<ButtonType> result = alert.showAndWait();
+                    result.ifPresent(buttonType -> {
+                        if (buttonType == ButtonType.OK) {
+                            GadgetsService.getInstance().delete(getIndex());
+                            updateTable();
+                        }
+                    });
                 });
             }
             @Override
@@ -84,7 +89,13 @@ public class MainPageController {
                 }
             }
         });
+        loadFromFileGadgets();
         updateTable();
+    }
+
+    private void loadFromFileGadgets() {
+        FileService fileService=new FileService();
+        fileService.load("Gadgets");
     }
 
     private void updateTable() {
@@ -182,6 +193,7 @@ public class MainPageController {
             String fileName = result.get();
             FileService fileService = new FileService();
             fileService.load(fileName);
+            updateTable();
         }
     }
 }

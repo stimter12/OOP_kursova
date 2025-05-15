@@ -142,16 +142,18 @@ public class gadgetAddPageController {
         currentStage.close();
     }
 
-    public void savePhoneConfirm(ActionEvent actionEvent) throws IOException {
+    public void savePhoneConfirm(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirm phone adding");
         alert.setHeaderText(null);
         alert.setContentText("Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            updatePhone();
-            savePhone(actionEvent);
-        }
+        result.ifPresent(buttonType -> {
+            if (buttonType == ButtonType.OK){
+                updatePhone();
+                savePhone(actionEvent);
+            }
+        });
     }
 
     private void savePhone(ActionEvent actionEvent) {
@@ -256,7 +258,15 @@ public class gadgetAddPageController {
         if (!phone.getMainCamera().getLensList().isEmpty()){
             mainCamera.setText(mainCamera.getText()+"\nLenses: ");
             for (int i = 0; i < phone.getMainCamera().getLensList().size(); i++) {
-                mainCamera.setText(mainCamera.getText()+"\n"+phone.getMainCamera().getLensList().get(i).toString());
+                mainCamera.setText(
+                        mainCamera.getText()+"\n" +
+                                phone.getMainCamera().getLensList().get(i).getLensType()+"\n"+
+                                phone.getMainCamera().getLensList().get(i).getResolution()+"\n"+
+                                phone.getMainCamera().getLensList().get(i).getAperture()+"\n"+
+                                phone.getMainCamera().getLensList().get(i).getFocalLength()+"\n"+
+                                phone.getMainCamera().getLensList().get(i).getFieldOfView()+"\n"+
+                                phone.getMainCamera().getLensList().get(i).getLensName()+"\n"
+                );
             }
         }
         //Power supply

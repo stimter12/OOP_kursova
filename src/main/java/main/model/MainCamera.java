@@ -29,8 +29,13 @@ public class MainCamera {
 
     @Override
     public String toString() {
-        return cameraZoom + ','+
-                lensList.toString();
+        String lensListString="";
+        for(Lens lens:lensList){
+            lensListString += lens.toString();
+        }
+        return cameraZoom + ","+
+                lensList.size() + ","+
+                lensListString;
     }
 
     @AllArgsConstructor
@@ -43,15 +48,6 @@ public class MainCamera {
         private String aperture;
         private String focalLength;
         private String fieldOfView;
-
-        public Lens(){
-            lensType="-";
-            lensName="-";
-            resolution="-";
-            aperture="-";
-            focalLength="-";
-            fieldOfView="-";
-        }
 
         @Override
         public String toString() {

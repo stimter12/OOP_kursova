@@ -145,16 +145,18 @@ public class EditPageController {
         currentStage.close();
     }
 
-    public void savePhoneConfirm(ActionEvent actionEvent) throws IOException {
+    public void savePhoneConfirm(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirm phone adding");
         alert.setHeaderText(null);
         alert.setContentText("Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            updatePhone();
-            savePhone(actionEvent);
-        }
+        result.ifPresent(buttonType -> {
+            if (buttonType == ButtonType.OK){
+                updatePhone();
+                savePhone(actionEvent);
+            }
+        });
     }
 
     private void savePhone(ActionEvent actionEvent) {

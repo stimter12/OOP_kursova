@@ -27,10 +27,13 @@ public class ConnectionsAndCommunication {
 
     @Override
     public String toString() {
-        return cellularTechnology + "," +
+        return cellularTechnology.size()+ ","+
+                String.join(",", cellularTechnology) + "," +
                 simCardType + "," +
                 simCardAmount + "," +
-                connectivityTechnology + "," +
-                inputAndOutput + ",";
+                connectivityTechnology.size()+ ","+
+                String.join(",", connectivityTechnology) + "," +
+                inputAndOutput.size()+ ","+
+                String.join(",", inputAndOutput) + ",";
     }
 }
