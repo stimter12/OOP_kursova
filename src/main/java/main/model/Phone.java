@@ -1,12 +1,13 @@
-package main.logic;
+package main.model;
 
 import javafx.scene.image.ImageView;
 import lombok.*;
 
+
 @AllArgsConstructor
 @Getter
 @Setter
-public class Phone extends Gadgets {
+public class Phone extends Gadget {
     private Display display;
     private FrontCamera frontCamera;
     private ConnectionsAndCommunication connectionsAndCommunication;
@@ -32,13 +33,27 @@ public class Phone extends Gadgets {
     @Override
     public void description() {
         this.setDescription(this.getName()+"\n"+
-                "Screen: "+ display.getDiagonal()+", "+
-                display.getResolution().getHeight()+"x"+display.getResolution().getWidth()+", "+
-                display.getPpi()+", "+display.getRefreshRate()+"\n"+
+                "Screen: "+ display.getDiagonal()+" "+
+                display.getResolution().getHeight()+"x"+display.getResolution().getWidth()+" "+
+                display.getPpi()+" "+display.getRefreshRate()+"\n"+
                 "Camera: "+mainCamera.description()+"\n"+
                 "Memory size: "+hardware.getMemoryStorage()+"\n"+
                 "CPU:"+hardware.getCPU()+"\n"+
-                "RAM: "+hardware.getRAM()+"Battery: "+powerSupply.getCapacity()+"\n"+
-                "Body: "+phoneBody.getMaterials()+", "+phoneBody.getWeight()+", "+phoneBody.getDimensions());
+                "RAM: "+hardware.getRAM()+" Battery: "+powerSupply.getCapacity()+"\n"+
+                "Body: "+phoneBody.getMaterials()+" "+phoneBody.getWeight()+" "+phoneBody.getDimensions());
+    }
+
+    @Override
+    public String toString() {
+        return getName()+","+
+                getImageView().getImage().getUrl()+","+
+                getPrice()+","+
+                display.toString()+
+                frontCamera.toString()+
+                connectionsAndCommunication.toString()+
+                hardware.toString()+
+                mainCamera.toString()+
+                powerSupply.toString()+
+                phoneBody.toString();
     }
 }

@@ -1,4 +1,4 @@
-package main.logic;
+package main.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,9 +20,8 @@ public class FrontCamera {
 
     @Override
     public String toString() {
-        return "FrontCamera:" + "\n" +
-                "resolution  " + resolution + "\n" +
-                "aperture  " + aperture + "\n" +
-                "fieldOfView  " + fieldOfView + "\n";
+        return resolution + "," +
+                aperture + "," +
+                fieldOfView + ",";
     }
 }

@@ -1,4 +1,4 @@
-package main.logic;
+package main.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +27,12 @@ public class MainCamera {
         return res.toString();
     }
 
+    @Override
+    public String toString() {
+        return cameraZoom + ','+
+                lensList.toString();
+    }
+
     @AllArgsConstructor
     @Setter
     @Getter
@@ -49,12 +55,12 @@ public class MainCamera {
 
         @Override
         public String toString() {
-            return lensType + ": \n" +
-                    lensName +"\n"+
-                    resolution + "\n"+
-                    aperture + "\n"+
-                    focalLength + "\n"+
-                    fieldOfView;
+            return lensType + "," +
+                    lensName +","+
+                    resolution + ","+
+                    aperture + ","+
+                    focalLength + ","+
+                    fieldOfView +",";
         }
     }
 }

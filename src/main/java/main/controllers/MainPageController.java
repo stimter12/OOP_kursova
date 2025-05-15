@@ -2,36 +2,39 @@ package main.controllers;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.MainApp;
-import main.logic.Gadgets;
+import main.model.Gadget;
+import main.service.FileService;
 import main.service.GadgetsService;
 import org.kordamp.ikonli.javafx.FontIcon;
 
-import java.io.*;
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.Optional;
 
 public class MainPageController {
     @FXML
-    private TableView<Gadgets> gadgetsTable;
+    private TableView<Gadget> gadgetsTable;
     @FXML
-    private TableColumn<Gadgets, ImageView> imageColumn;
+    private TableColumn<Gadget, ImageView> imageColumn;
     @FXML
-    private TableColumn<Gadgets, String> descriptionColumn;
+    private TableColumn<Gadget, String> descriptionColumn;
     @FXML
-    private TableColumn<Gadgets, String> priceColumn;
+    private TableColumn<Gadget, String> priceColumn;
     @FXML
-    private TableColumn<Gadgets, Void> buttonsColumn;
+    private TableColumn<Gadget, Void> buttonsColumn;
 
     public  void initialize() {
         imageColumn.setCellValueFactory(new PropertyValueFactory<>("imageView"));
@@ -39,7 +42,19 @@ public class MainPageController {
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         descriptionColumn.setSortable(false);
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-        //TODO price sort
+        Comparator<String> priceColumnComparator = (o1, o2) -> {
+            String q1="",q2="";
+            for(Character ch : o1.toCharArray()){
+                if((int)ch>47&(int)ch<58) q1 += ch.toString();
+            }
+            for(Character ch : o2.toCharArray()){
+                if((int)ch>47&(int)ch<58) q2 += ch.toString();
+            }
+            if(Integer.parseInt(q1)>Integer.parseInt(q2)) return 1;
+            else if(Integer.parseInt(q1)<Integer.parseInt(q2)) return -1;
+            return 0;
+        };
+        priceColumn.setComparator(priceColumnComparator);
         buttonsColumn.setSortable(false);
         buttonsColumn.setCellFactory(col ->new TableCell<>(){
             private final Button infoButton=new Button("",new FontIcon("fltfal-info-28"));
@@ -74,10 +89,6 @@ public class MainPageController {
 
     private void updateTable() {
         gadgetsTable.setItems(FXCollections.observableList(GadgetsService.getInstance().getGadgets()));
-    }
-
-    public void close() {
-        Platform.exit();
     }
 
     public void infoPage(ActionEvent actionEvent, int index) {
@@ -123,7 +134,7 @@ public class MainPageController {
         currentStage.close();
     }
 
-    public void addingGadget(ActionEvent actionEvent) throws IOException {
+    public void addingGadgetPage(ActionEvent actionEvent) throws IOException {
         Stage newStage=new Stage();
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("gadgetAddPage.fxml"));
         Scene scene = new Scene(loader.load(), 800, 450);
@@ -142,5 +153,35 @@ public class MainPageController {
         alert.setHeaderText("OOP_Kursova");
         alert.setContentText("This program was developed for a coursework assignment");
         alert.showAndWait();
+    }
+
+    public void close() {
+        Platform.exit();
+    }
+
+    public void saveInFile() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Save in file");
+        dialog.setHeaderText("Choose filename");
+        dialog.setContentText("Please enter the file name");
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            String fileName = result.get();
+            FileService fileService = new FileService();
+            fileService.save(fileName);
+        }
+    }
+
+    public void loadFromFile() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Load from file");
+        dialog.setHeaderText("Choose filename");
+        dialog.setContentText("Please enter the file name");
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            String fileName = result.get();
+            FileService fileService = new FileService();
+            fileService.load(fileName);
+        }
     }
 }

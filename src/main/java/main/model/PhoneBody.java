@@ -1,4 +1,4 @@
-package main.logic;
+package main.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,5 +18,13 @@ public class PhoneBody {
         materials="-";
         dimensions="-";
         weight="-";
+    }
+
+    @Override
+    public String toString() {
+        return waterproof + "," +
+                materials + "," +
+                dimensions + "," +
+                weight;
     }
 }

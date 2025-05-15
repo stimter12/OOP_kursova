@@ -1,4 +1,4 @@
-package main.logic;
+package main.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,14 +30,13 @@ public class Hardware {
 
     @Override
     public String toString() {
-        return "Hardware:" + "\n" +
-                "operatingSystem  " + operatingSystem + "\n" +
-                "CPU  " + CPU + "\n" +
-                "CPUFrequency  " + CPUFrequency + "\n" +
-                "CPUCores " + CPUCores + "\n" +
-                "GPU  " + GPU + "\n" +
-                "RAM  " + RAM + "\n" +
-                "memoryStorage  " + memoryStorage + "\n" +
-                "memoryCardSlot  " + memoryCardSlot + "\n";
+        return operatingSystem + "," +
+                CPU + "," +
+                CPUFrequency + "," +
+                CPUCores + "," +
+                GPU + "," +
+                RAM + "," +
+                memoryStorage + "," +
+                memoryCardSlot + ",";
     }
 }

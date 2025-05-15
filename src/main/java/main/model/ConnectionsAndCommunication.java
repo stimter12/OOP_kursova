@@ -1,4 +1,4 @@
-package main.logic;
+package main.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,11 +27,10 @@ public class ConnectionsAndCommunication {
 
     @Override
     public String toString() {
-        return "ConnectionsAndCommunication:" + "\n" +
-                "cellularTechnology=" + cellularTechnology + "\n" +
-                "simCardType='" + simCardType + "\n" +
-                "simCardAmount=" + simCardAmount + "\n" +
-                "connectivityTechnology=" + connectivityTechnology + "\n" +
-                "inputAndOutput=" + inputAndOutput + "\n";
+        return cellularTechnology + "," +
+                simCardType + "," +
+                simCardAmount + "," +
+                connectivityTechnology + "," +
+                inputAndOutput + ",";
     }
 }

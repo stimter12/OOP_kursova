@@ -1,4 +1,4 @@
-package main.logic;
+package main.model;
 
 import javafx.scene.image.ImageView;
 import lombok.*;
@@ -8,9 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public abstract class Gadgets {
-    private ImageView imageView;
+public abstract class Gadget {
     private String name;
+    private ImageView imageView;
     private String price;
     private String description;
 

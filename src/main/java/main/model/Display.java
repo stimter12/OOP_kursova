@@ -1,4 +1,4 @@
-package main.logic;
+package main.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,13 +26,13 @@ public class Display {
 
     @Override
     public String toString() {
-        return "Display:" + "\n" +
-                "diagonal  " + diagonal +
-                "resolution  " + resolution + "\n" +
-                "ratio  " + resolutionRatio + "\n" +
-                "ppi  " + ppi + "\n" +
-                "refreshRate  " + refreshRate + "\n" +
-                "brightness  " + brightness + "\n";
+        return diagonal + "," +
+                resolution.width + "," +
+                resolution.height + "," +
+                resolutionRatio + "," +
+                ppi + "," +
+                refreshRate + "," +
+                brightness + ",";
     }
 
     public void setResolution(String width, String height) {
