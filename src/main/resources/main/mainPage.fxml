@@ -29,6 +29,11 @@
                <Font size="16.0" />
             </font>
          </Button>
+         <Button layoutX="563.0" layoutY="155.0" mnemonicParsing="false" onAction="#loadFromFileGadgets" prefHeight="62.0" prefWidth="123.0" text="load from file &quot;Gadgets&quot;" wrapText="true" AnchorPane.rightAnchor="14.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Button>
        </AnchorPane>
    </center>
    <top>

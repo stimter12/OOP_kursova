@@ -89,7 +89,7 @@ public class InfoPageController {
         if (!phone.getMainCamera().getLensList().isEmpty()){
             mainCamera.setText(mainCamera.getText()+"\nLenses: ");
             for (int i = 0; i < phone.getMainCamera().getLensList().size(); i++) {
-                mainCamera.setText(mainCamera.getText()+"\n"+phone.getMainCamera().getLensList().get(i).toString());
+                mainCamera.setText(mainCamera.getText()+"\n"+phone.getMainCamera().getLensList().get(i).ShowToString());
             }
         }
         //Power supply

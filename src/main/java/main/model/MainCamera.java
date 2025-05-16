@@ -58,5 +58,16 @@ public class MainCamera {
                     focalLength + ","+
                     fieldOfView +",";
         }
+
+        public String ShowToString() {
+            return lensType + "\n" +
+                    lensName + "\n" +
+                    resolution + "\n" +
+                    aperture + "\n" +
+                    focalLength + "\n" +
+                    fieldOfView + "\n";
+        }
+
+
     }
 }

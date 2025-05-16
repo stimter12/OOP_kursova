@@ -97,6 +97,7 @@ public class FileService {
                 phone.getPhoneBody().setDimensions(phone_array[k++]);
                 phone.getPhoneBody().setWeight(phone_array[k]);
                 phone.description();
+                GadgetsService.getInstance().getGadgets().clear();
                 GadgetsService.getInstance().add(phone);
             }
         } catch (IOException e) {

@@ -89,13 +89,13 @@ public class MainPageController {
                 }
             }
         });
-        loadFromFileGadgets();
         updateTable();
     }
 
-    private void loadFromFileGadgets() {
+    public void loadFromFileGadgets() {
         FileService fileService=new FileService();
         fileService.load("Gadgets");
+        updateTable();
     }
 
     private void updateTable() {

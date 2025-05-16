@@ -9,7 +9,7 @@
 
 <VBox spacing="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.InfoPageController">
    <children>
-      <ScrollPane prefHeight="400.0" prefWidth="442.0">
+      <ScrollPane maxHeight="3000.0" prefHeight="500.0" prefWidth="442.0">
          <AnchorPane prefHeight="344.0" prefWidth="440.0">
             <VBox layoutX="-12.0" layoutY="20.0" prefWidth="200.0" spacing="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="226.0" AnchorPane.topAnchor="14.0">
                <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
@@ -32,7 +32,7 @@
                </Label>
                <Label fx:id="mainCamera" />
             </VBox>
-            <VBox layoutX="178.0" layoutY="-3.0" maxHeight="3000.0" prefWidth="200.0" spacing="5.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+            <VBox layoutX="178.0" layoutY="-3.0" maxHeight="3000.0" spacing="5.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                <Label text="Display">
                   <font>
                      <Font size="16.0" />
