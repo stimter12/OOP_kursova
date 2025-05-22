@@ -11,7 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.MainApp;
@@ -28,7 +28,7 @@ public class MainPageController {
     @FXML
     private TableView<Gadget> gadgetsTable;
     @FXML
-    private TableColumn<Gadget, ImageView> imageColumn;
+    private TableColumn<Gadget, Pane> imageColumn;
     @FXML
     private TableColumn<Gadget, String> descriptionColumn;
     @FXML
@@ -37,7 +37,7 @@ public class MainPageController {
     private TableColumn<Gadget, Void> buttonsColumn;
 
     public  void initialize() {
-        imageColumn.setCellValueFactory(new PropertyValueFactory<>("imageView"));
+        imageColumn.setCellValueFactory(new PropertyValueFactory<>("imageViewTable"));
         imageColumn.setSortable(false);
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         descriptionColumn.setSortable(false);
@@ -89,12 +89,6 @@ public class MainPageController {
                 }
             }
         });
-        updateTable();
-    }
-
-    public void loadFromFileGadgets() {
-        FileService fileService=new FileService();
-        fileService.load("Gadgets");
         updateTable();
     }
 
@@ -167,7 +161,12 @@ public class MainPageController {
     }
 
     public void close() {
-        Platform.exit();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm Exit");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure?");
+        alert.showAndWait();
+        if (alert.getResult() == ButtonType.OK) Platform.exit();
     }
 
     public void saveInFile() {
@@ -184,7 +183,7 @@ public class MainPageController {
     }
 
     public void loadFromFile() {
-        TextInputDialog dialog = new TextInputDialog();
+        TextInputDialog dialog = new TextInputDialog("Gadgets");
         dialog.setTitle("Load from file");
         dialog.setHeaderText("Choose filename");
         dialog.setContentText("Please enter the file name");

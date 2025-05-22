@@ -28,6 +28,7 @@ public class FileService {
     }
 
     public void load(String fileName) {
+        GadgetsService.getInstance().getGadgets().clear();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName+".csv"))){
             int mainSize = Integer.parseInt(bufferedReader.readLine());
             for (int i = 0; i <mainSize; i++) {
@@ -47,6 +48,7 @@ public class FileService {
                 phone.getFrontCamera().setAperture(phone_array[k++]);
                 phone.getFrontCamera().setFieldOfView(phone_array[k++]);
                 int size= Integer.parseInt(phone_array[k++]);
+                if (size==0) k++;
                 List<String> temp=new ArrayList<>();
                 for (int j = 0; j < size; j++) {
                     temp.add(phone_array[k++]);
@@ -55,12 +57,14 @@ public class FileService {
                 phone.getConnectionsAndCommunication().setSimCardType(phone_array[k++]);
                 phone.getConnectionsAndCommunication().setSimCardAmount(phone_array[k++]);
                 size= Integer.parseInt(phone_array[k++]);
+                if (size==0) k++;
                 temp=new ArrayList<>();
                 for (int j = 0; j < size; j++) {
                     temp.add(phone_array[k++]);
                 }
                 phone.getConnectionsAndCommunication().setConnectivityTechnology(temp);
                 size= Integer.parseInt(phone_array[k++]);
+                if (size==0) k++;
                 temp=new ArrayList<>();
                 for (int j = 0; j < size; j++) {
                     temp.add(phone_array[k++]);
@@ -97,7 +101,7 @@ public class FileService {
                 phone.getPhoneBody().setDimensions(phone_array[k++]);
                 phone.getPhoneBody().setWeight(phone_array[k]);
                 phone.description();
-                GadgetsService.getInstance().getGadgets().clear();
+                phone.imageViewTable();
                 GadgetsService.getInstance().add(phone);
             }
         } catch (IOException e) {

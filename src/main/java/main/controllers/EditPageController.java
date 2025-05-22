@@ -16,6 +16,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import lombok.Setter;
 import main.MainApp;
+import main.model.Gadget;
 import main.model.MainCamera;
 import main.model.Phone;
 import main.service.GadgetsService;
@@ -127,9 +128,9 @@ public class EditPageController {
     private Label phoneBody;
     @Setter
     private int index;
-    Phone phone=new Phone();
+    Phone phone;
     public void setPhone() {
-        phone= (Phone) GadgetsService.getInstance().getGadgets().get(index);
+        phone=new Phone((Phone) GadgetsService.getInstance().getGadgets().get(index));
     }
 
     public void returnToMainPage(javafx.event.ActionEvent actionEvent) throws IOException {
@@ -160,6 +161,8 @@ public class EditPageController {
     }
 
     private void savePhone(ActionEvent actionEvent) {
+        phone.removeCommas();
+        phone.imageViewTable();
         phone.description();
         GadgetsService.getInstance().getGadgets().set(index, phone);
         try {
@@ -227,12 +230,6 @@ public class EditPageController {
         if (!phone.getFrontCamera().getFieldOfView().equals("-"))frontCamera.setText(frontCamera.getText()+"\nfield of view: "+phone.getFrontCamera().getFieldOfView());
         //Connections and communication
         connectionsAndCommunication.setText("");
-        if (!phone.getConnectionsAndCommunication().getCellularTechnology().isEmpty()){
-            connectionsAndCommunication.setText("Cellular technology: ");
-            for (int i = 0; i < phone.getConnectionsAndCommunication().getCellularTechnology().size(); i++) {
-                connectionsAndCommunication.setText(connectionsAndCommunication.getText()+"\n"+phone.getConnectionsAndCommunication().getCellularTechnology().get(i));
-            }
-        }
         if (!phone.getConnectionsAndCommunication().getSimCardType().equals("-"))connectionsAndCommunication.setText(connectionsAndCommunication.getText()+"\nSim card type: "+phone.getConnectionsAndCommunication().getSimCardType());
         if (!phone.getConnectionsAndCommunication().getSimCardAmount().equals("-"))connectionsAndCommunication.setText(connectionsAndCommunication.getText()+"\nSim card amount: "+phone.getConnectionsAndCommunication().getSimCardAmount());
         if (!phone.getConnectionsAndCommunication().getConnectivityTechnology().isEmpty()){
@@ -241,10 +238,16 @@ public class EditPageController {
                 connectionsAndCommunication.setText(connectionsAndCommunication.getText()+"\n"+phone.getConnectionsAndCommunication().getConnectivityTechnology().get(i));
             }
         }
-        if (!phone.getConnectionsAndCommunication().getInputAndOutput().isEmpty()){
-            connectionsAndCommunication.setText(connectionsAndCommunication.getText()+"\nInput and output: ");
+        if (!phone.getConnectionsAndCommunication().getCellularTechnology().isEmpty()){
+            connectionsAndCommunication.setText(connectionsAndCommunication.getText()+"\nCellular technology: ");
             for (int i = 0; i < phone.getConnectionsAndCommunication().getCellularTechnology().size(); i++) {
                 connectionsAndCommunication.setText(connectionsAndCommunication.getText()+"\n"+phone.getConnectionsAndCommunication().getCellularTechnology().get(i));
+            }
+        }
+        if (!phone.getConnectionsAndCommunication().getInputAndOutput().isEmpty()){
+            connectionsAndCommunication.setText(connectionsAndCommunication.getText()+"\nInput and output: ");
+            for (int i = 0; i < phone.getConnectionsAndCommunication().getInputAndOutput().size(); i++) {
+                connectionsAndCommunication.setText(connectionsAndCommunication.getText()+"\n"+phone.getConnectionsAndCommunication().getInputAndOutput().get(i));
             }
         }
         //Hardware
@@ -261,7 +264,7 @@ public class EditPageController {
         if (!phone.getMainCamera().getLensList().isEmpty()){
             mainCamera.setText(mainCamera.getText()+"\nLenses: ");
             for (int i = 0; i < phone.getMainCamera().getLensList().size(); i++) {
-                mainCamera.setText(mainCamera.getText()+"\n"+phone.getMainCamera().getLensList().get(i).toString());
+                mainCamera.setText(mainCamera.getText()+"\n"+phone.getMainCamera().getLensList().get(i).ShowToString());
             }
         }
         //Power supply
@@ -346,6 +349,7 @@ public class EditPageController {
     }
 
     public void lensClear() {
+        List<Gadget> gadgets = GadgetsService.getInstance().getGadgets();
         phone.getMainCamera().getLensList().clear();
         updatePhone();
     }

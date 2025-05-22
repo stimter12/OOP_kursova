@@ -18,14 +18,13 @@ import main.MainApp;
 import main.model.MainCamera;
 import main.model.Phone;
 import main.service.GadgetsService;
-
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-public class gadgetAddPageController {
+public class AddPageController {
     @FXML
     private TextField height;
     @FXML
@@ -157,6 +156,8 @@ public class gadgetAddPageController {
     }
 
     private void savePhone(ActionEvent actionEvent) {
+        phone.removeCommas();
+        phone.imageViewTable();
         phone.description();
         GadgetsService.getInstance().add(phone);
         try {
@@ -258,15 +259,7 @@ public class gadgetAddPageController {
         if (!phone.getMainCamera().getLensList().isEmpty()){
             mainCamera.setText(mainCamera.getText()+"\nLenses: ");
             for (int i = 0; i < phone.getMainCamera().getLensList().size(); i++) {
-                mainCamera.setText(
-                        mainCamera.getText()+"\n" +
-                                phone.getMainCamera().getLensList().get(i).getLensType()+"\n"+
-                                phone.getMainCamera().getLensList().get(i).getResolution()+"\n"+
-                                phone.getMainCamera().getLensList().get(i).getAperture()+"\n"+
-                                phone.getMainCamera().getLensList().get(i).getFocalLength()+"\n"+
-                                phone.getMainCamera().getLensList().get(i).getFieldOfView()+"\n"+
-                                phone.getMainCamera().getLensList().get(i).getLensName()+"\n"
-                );
+                mainCamera.setText(mainCamera.getText()+"\n"+phone.getMainCamera().getLensList().get(i).ShowToString());
             }
         }
         //Power supply

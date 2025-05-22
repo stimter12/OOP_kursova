@@ -9,28 +9,28 @@
 
 <VBox spacing="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.InfoPageController">
    <children>
-      <ScrollPane maxHeight="3000.0" prefHeight="500.0" prefWidth="442.0">
+      <ScrollPane hbarPolicy="NEVER" maxHeight="3000.0" prefHeight="500.0" prefWidth="442.0">
          <AnchorPane prefHeight="344.0" prefWidth="440.0">
-            <VBox layoutX="-12.0" layoutY="20.0" prefWidth="200.0" spacing="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="226.0" AnchorPane.topAnchor="14.0">
+            <VBox layoutX="-12.0" layoutY="20.0" maxHeight="3000.0" prefWidth="200.0" spacing="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="226.0" AnchorPane.topAnchor="14.0">
                <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                <Button mnemonicParsing="false" onAction="#ImageViewFull">
                   <graphic>
                      <FontIcon iconLiteral="fltral-image-add-24" iconSize="20" />
                   </graphic>
                </Button>
-               <Label fx:id="namePrice" />
+               <Label fx:id="namePrice" wrapText="true" />
                <Label text="Hardware">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <Label fx:id="hardware" />
+               <Label fx:id="hardware" wrapText="true" />
                <Label text="Main camera">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <Label fx:id="mainCamera" />
+               <Label fx:id="mainCamera" wrapText="true" />
             </VBox>
             <VBox layoutX="178.0" layoutY="-3.0" maxHeight="3000.0" spacing="5.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                <Label text="Display">
@@ -38,37 +38,40 @@
                      <Font size="16.0" />
                   </font>
                </Label>
-               <Label fx:id="display" />
+               <Label fx:id="display" wrapText="true" />
                <Label text="Connections and communication" wrapText="true">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <Label fx:id="connectionsAndCommunication" />
+               <Label fx:id="connectionsAndCommunication" wrapText="true" />
                <Label text="Power supply">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <Label fx:id="powerSupply" />
+               <Label fx:id="powerSupply" wrapText="true" />
                <Label text="Phone body">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <Label fx:id="phoneBody" />
+               <Label fx:id="phoneBody" wrapText="true" />
                <Label text="Front camera">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <Label fx:id="frontCamera" />
+               <Label fx:id="frontCamera" wrapText="true" />
                <padding>
                   <Insets left="5.0" />
                </padding>
             </VBox>
          </AnchorPane>
       </ScrollPane>
-      <Button mnemonicParsing="false" onAction="#returnToMainPage" text="Back" />
+      <Button mnemonicParsing="false" onAction="#returnToMainPage" text="Back">
+         <VBox.margin>
+            <Insets bottom="14.0" left="14.0" />
+         </VBox.margin></Button>
    </children>
 </VBox>
